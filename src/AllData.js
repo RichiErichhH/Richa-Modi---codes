@@ -16,3 +16,43 @@ import React from "react";
     ]
 
 export default AllData;
+
+// unction Todo() {
+    //     const [todos, setTodos] = useState([]);
+    //     const [newTodo, setNewTodo] = useState('');
+      
+    //     const handleAddTodo = () => {
+    //       if (newTodo) {
+    //         setTodos([...todos, newTodo]);
+    //         setNewTodo('');
+    //       }
+    //     };
+      
+    //     const handleRemoveTodo = (index) => {
+    //       const updatedTodos = todos.filter((_, i) => i !== index);
+    //       setTodos(updatedTodos);
+    //     };
+      
+    //     return (
+    //       <div>
+    //         <h1>Todo App</h1>
+    //         <input
+    //           type="text"
+    //           placeholder="Add a new todo..."
+    //           value={newTodo}
+    //           onChange={(e) => setNewTodo(e.target.value)}
+    //         />
+    //         <button onClick={handleAddTodo}>Add</button>
+    //         <ul>
+    //           {todos.map((todo, index) => (
+    //             <li key={index}>
+    //               {todo}
+    //               <button onClick={() => handleRemoveTodo(index)}>Remove</button>
+    //             </li>
+    //           ))}
+    //         </ul>
+    //       </div>
+    //     );
+    //   }
+      
+    //   export default Todo;
