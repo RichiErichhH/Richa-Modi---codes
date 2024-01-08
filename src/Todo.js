@@ -4,7 +4,8 @@ function Todo(){
     const[Input,setInput]=useState('');
     const[Input1,setInput1]=useState('');
     const[update,setUpdate]=useState([]);
-    const[editIndex,setEditIndex]=useState(null);
+    const[editedTitle,setEditedTitle]=useState('');
+    const[editedContent,setEditedContent]=useState();
     function show1(e){
         setInput1(e.target.value);
     }
@@ -19,15 +20,16 @@ function Todo(){
               title: Input1,
               description: Input,
             };
-            if (editIndex !== null) {
+            // if (editIndex !== null) {
                 
-                const updatedTodos = [...update];
-                updatedTodos[editIndex] = TodoData;
-                setUpdate(updatedTodos);
-                setEditIndex(null);
-                setInput1("");
-                setInput("");
-              } else {
+            //     const updatedTodos = [...update];
+            //     updatedTodos[editIndex] = TodoData;
+            //     setUpdate(updatedTodos);
+            //     setEditIndex(null);
+            //     setInput1("");
+            //     setInput("");
+            //   } else 
+            {
                 
                 setUpdate([...update, TodoData]);
                 setInput1("");
@@ -40,12 +42,20 @@ function Todo(){
         const updatedTodos=update.filter((_,i)=> i !== index);
         setUpdate(updatedTodos)
     }
-    const editData=(index)=>{
+    
+    const editData=(index,item)=>{
         const editTodos=update.filter((a,i)=> i === index);
+        setEditedTitle(item.title)
+        setEditedContent(item.description)
         if(editTodos){
-            setInput1(editTodos[0].title);
-            setInput(editTodos[0].description);
-            setEditIndex(index);
+           <div> 
+            <input type="text" value={editedTitle} onChange={e => setEditedTitle(e.target.value)}/>
+        ````<textarea value={editedContent} onChange={e => setEditedContent(e.target.value)}></textarea>
+            <div>
+                <button onClick={update}>Update</button>
+                {/* <button onClick={cancel}>Cancel</button> */}
+            </div>
+        </div>
         }
         
     }
@@ -68,7 +78,7 @@ function Todo(){
                     <li style={{ marginRight:"12px"}}>Description: {item.description}</li>
                     <div className="btn2">
                         <button onClick={()=>removeData(index)} className="btn3">Delete</button>
-                        <button onClick={()=>editData(index)}>edit</button>
+                        <button onClick={()=>editData(index,item.title,item.description)} className="btn4">edit</button>
                     </div>
                     </div>
                     </div>
